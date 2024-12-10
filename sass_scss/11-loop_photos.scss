@@ -1,0 +1,9 @@
+// Import the list of names from another file
+@import 'list_names';
+
+// Use @each to create classes for each name
+@each $name in $list-names {
+  .#{$name} {
+    background-image: url('images/#{$name}.jpg');
+  }
+}
