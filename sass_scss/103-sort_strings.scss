@@ -1,3 +1,6 @@
+// Import list to sort
+@import "103-sort_list"
+
 // Function to sort the list
 @function sort($list) {
     $sorted_list: ();
