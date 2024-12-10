@@ -3,7 +3,7 @@
 
 // Use @each to create classes for each name
 @each $name in $list-names {
-  .#{$name} {
+  .photo#{$name} {
     background-image: url('images/#{$name}.jpg');
   }
 }
