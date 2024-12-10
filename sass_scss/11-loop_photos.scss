@@ -1,5 +1,5 @@
 // Import the list of names from another file
-@import 'list_names';
+@import '11-photos';
 
 // Use @each to create classes for each name
 @each $name in $list-names {
