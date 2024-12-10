@@ -1,0 +1,10 @@
+// Define a button color that changes when hovered
+button {
+    // Default text color for buttons
+    color: #FF0000;
+  
+    // Change text color on hover
+    &:hover {
+      color: #00FF00;
+    }
+  }
