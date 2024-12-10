@@ -1,0 +1,13 @@
+// Define the variables
+$text-color: #3D3D3D;
+$background-color: #6D6D6D;
+
+// Apply text color to body and p
+body, p {
+  color: $text-color;
+}
+
+// Apply background color to body and h2
+body, h2 {
+  background-color: $background-color;
+}
