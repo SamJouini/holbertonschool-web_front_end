@@ -1,0 +1,23 @@
+// Function to sort the list
+@function sort($list) {
+    $sorted_list: ();
+    @while length($list) > 0 {
+      $min: nth($list, 1);
+      $min_index: 1;
+      @for $i from 1 through length($list) {
+        @if nth($list, $i) < $min {
+          $min: nth($list, $i);
+          $min_index: $i;
+        }
+      }
+      $sorted_list: append($sorted_list, $min);
+      $list: list-remove($list, $min_index);
+    }
+    @return $sorted_list;
+  }
+  
+  // Sort the list
+  $sorted_list: sort($list_to_sort);
+  
+  // Print the sorted list to debug output
+  @debug "Sorted list: #{$sorted_list}";
