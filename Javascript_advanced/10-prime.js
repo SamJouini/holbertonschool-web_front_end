@@ -26,5 +26,5 @@ for (let i = 0; i < 100; i++) {
 const end = performance.now();
 
 console.log(
-  `Execution time of calculating prime numbers 100 times was ${end - start} milliseconds.`
+  `Execution time of calculating prime numbers 100 times was ${end - start} milliseconds.`,
 );

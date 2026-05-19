@@ -1,13 +1,13 @@
-function divideBy (firstNumber) {
-        return function (secondNumber) {
-      return secondNumber/firstNumber;
-    };
+function divideBy(firstNumber) {
+  return function (secondNumber) {
+    return secondNumber / firstNumber;
+  };
 }
 
-function addBy (firstNumber) {
-    return function (secondNumber) {
-        return firstNumber + secondNumber;
-    }
+function addBy(firstNumber) {
+  return function (secondNumber) {
+    return firstNumber + secondNumber;
+  };
 }
 
 const addBy100 = addBy(100);
