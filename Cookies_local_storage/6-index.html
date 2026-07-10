@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 6</title>
+</head>
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            // Create an array availableItems that will contain all the available items. Add the strings Shampoo, Soap, Sponge, and Water in the array
+            availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+            // Create a function addItemToCart:
+            // It takes one argument item (string)
+            const addItemToCart = (item) => {
+                // It adds a key to the local storage of the name of the item, and set the value to true    
+                sessionStorage.setItem(item, true);
+            }
+
+            // Create a function createStore:
+            const createStore = () => {
+                // Create a ul and append it to the DOM
+                const itemsList = document.createElement("ul")
+                document.body.append(itemsList)
+                // Loop through the array of items, and create a list item to add to the ul
+                availableItems.forEach(storedItem => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = storedItem;
+                    // The item should display the name of the available product
+                    itemsList.append(listItem);
+                    // On click the item should call the function addItemToCart
+                    listItem.addEventListener("click", function() {
+                        addItemToCart(storedItem);
+                    });
+                });
+            }
+
+            // Create a function displayCart:
+            const displayCart = () => {
+                // If the local storage does not contain any item, this function does not do anything
+                // If the local storage contains any item, it should display the message You previously had X items in your cart in a p element that you can append to the body
+                const numberOfItems = sessionStorage.length
+                let checkCart = document.createElement("p");
+                checkCart.textContent = "You previously had " + numberOfItems + " items in your cart"
+                document.body.append(checkCart);
+            }
+
+            const x = document.getElementById("result");
+            if (typeof(Storage) === "undefined") {
+                // If Local storage is not enabled on your browser, display an alert that will contain the message Sorry, your browser does not support Web storage. Try again with a better one
+                alert("Sorry, your browser does not support Web storage. Try again with a better one");
+            } else {
+                // If local storage is available it should allow the user to see the application and call the function createStore and displayCart
+                createStore();
+                displayCart();
+            }
+        });
+    </script>
+</body>
+</html>

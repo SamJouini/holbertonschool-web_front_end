@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+    <h1>Login to the website</h1>
+<input type="text" id="firstname" placeholder="Firstname">
+<input type="text" id="email" placeholder="Email">
+<button id="login">Log me in</button>
+<h1>Cookies</h1>
+<button id="cookies">Show the cookies</button>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        // Clears the input fields for firstname and email
+        function clearInput() {
+            document.getElementById("firstname").value = "";
+            document.getElementById("email").value = "";
+        }
+        // Sets a cookie with a name, value, and optional expiration in days
+        function setCookie(cname, cvalue, days) {
+            let expires = "";
+            if (days) {
+                const date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = cname + "=" + cvalue + ";" + expires + "; path=/";
+        }
+        
+        // Sets cookies for firstname and email, then clears the input fields
+        function setCookies() {
+            setCookie("firstname", "", -1);
+            setCookie("email", "", -1);
+            const firstname = document.getElementById("firstname").value;
+            const email = document.getElementById("email").value
+            setCookie("firstname", firstname, 10);
+            setCookie("email", email, 10);
+            clearInput();
+        }
+
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let cookieArray = document.cookie.split(';');
+            for(let i = 0; i < cookieArray.length; i++) {
+                let c = cookieArray[i];
+                while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+            }
+
+        // Displays all cookies in a new paragraph appended to the body
+        function showCookies() {
+            const p = document.createElement("p");
+            p.innerHTML = "Email: " + getCookie("email") + " - Firstname: " + getCookie("firstname");
+            document.body.append(p);
+        }
+        
+        // Attach event listener to the "Log me in" button to set cookies
+        document.getElementById("login").addEventListener("click", setCookies);
+        // Attach event listener to the "Show the cookies" button to display cookies
+        document.getElementById("cookies").addEventListener("click", showCookies);
+    });
+</script>
+</body>
+</html>
